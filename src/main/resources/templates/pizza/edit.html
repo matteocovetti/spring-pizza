@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<th:block th:replace="fragments/risorse :: risorse-head"></th:block>
+    <title>Pizza edit</title>
+  </head>
+  <body>
+  <nav th:replace="fragments/navbar :: navbar('pizza')"></nav>
+  <div class="container">
+  	<h1>New Pizza</h1>
+  	<hr/>
+  	<!-- form che gestisce l'attributo book -->
+  	
+  	<form
+  		id="form-pizza"
+  		th:object="${pizza}"
+  		th:action="@{/add}"
+  		method="POST"
+  	>
+
+  		<div class="row mb-3">
+  		<div class="col-8">
+  			<label class="form-label" for="nome">Nome</label>
+  			<input type="text" id="nome" class="form-control" th:field="*{nome}">
+  			
+  		</div>
+  		<div class="col-4">
+  			<label class="form-label" for="prezzo">Prezzo (€)</label>
+  			<input type="number" id="prezzo" class="form-control" th:field="*{prezzo}">
+  				
+  		</div>
+  		</div>
+  		<div class="mb-3">
+  			<label class="form-label" for="descrizione">Descrizione</label>
+  			<textarea id="descrizione" class="form-control" th:field="*{descrizione}" rows="5"></textarea>
+  		</div>
+  		
+  		<div>
+  			<button type="submit" class="btn btn-primary">Save</button>
+  			<a class="btn btn-primary" href="/">Cancel</a>
+  		</div>
+  	</form>
+  </div>
+  	<th:block th:replace="fragments/risorse :: risorse-js"></th:block>
+  </body>
+</html>

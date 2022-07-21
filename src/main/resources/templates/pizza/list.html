@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<th:block th:replace="fragments/risorse :: risorse-head"></th:block>
+    <title>Pizza</title>
+  </head>
+  <body>
+  <nav th:replace="fragments/navbar :: navbar('pizza')"></nav>
+  <div class="container">
+  	<h1>Menù</h1>
+  	<hr/>
+  	<a class="btn btn-primary" th:href="@{/add}">Add a pizza</a>
+  	<!-- tabella con tutti i book -->
+  	<table class="table" th:if="${pizzaList.size() > 0}">
+  		<thead>
+  			<tr>
+  				<th>Nome</th>
+  				<th>Descrizione</th>
+  				<th>Prezzo (€)</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr th:each="p : ${pizzaList}">
+  				<td th:text="${p.nome}">Nome</td>
+  				<td th:text="${p.descrizione}">Descrizione</td>
+  				<td th:text="${p.prezzo}">Prezzo</td>
+  				
+  			</tr>
+  		</tbody>
+  	</table>
+  </div>
+  <!-- se la lista di book è vuota -->
+  <div class="alert alert-info my-5" th:unless="${pizzaList.size() > 0}">
+  	<h3>There are no pizza yet</h3>
+  </div>
+  	<th:block th:replace="fragments/risorse :: risorse-js"></th:block>
+  </body>
+</html>

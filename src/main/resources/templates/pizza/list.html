@@ -7,6 +7,7 @@
   <body>
   <nav th:replace="fragments/navbar :: navbar('pizza')"></nav>
   <div class="container">
+  <div th:if="${successMessage != null && successMessage != ''}" class="alert alert-success" th:text="${successMessage}"></div>
   	<h1>Menù</h1>
   	<hr/>
   	<a class="btn btn-primary" th:href="@{/add}">Add a pizza</a>
@@ -17,6 +18,7 @@
   				<th>Nome</th>
   				<th>Descrizione</th>
   				<th>Prezzo (€)</th>
+  				<th>Actions</th>
   			</tr>
   		</thead>
   		<tbody>
@@ -25,6 +27,14 @@
   				<td th:text="${p.descrizione}">Descrizione</td>
   				<td th:text="${p.prezzo}">Prezzo</td>
   				
+  				<td>
+  					<a class="btn btn-primary" th:href="@{|/delete/${p.id}|}" title="Delete" onclick="return confirm('Are you sure?')">
+  					<i class="fa-solid fa-trash-can"></i>
+  					</a>
+  					<a class="btn btn-primary" th:href="@{|/edit/${p.id}|}" title="Edit">
+  					<i class="fa-solid fa-pen-to-square"></i>
+  					</a>
+  				</td>
   			</tr>
   		</tbody>
   	</table>

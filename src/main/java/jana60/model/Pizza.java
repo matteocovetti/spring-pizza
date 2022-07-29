@@ -1,11 +1,14 @@
 package jana60.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -27,6 +30,9 @@ public class Pizza {
 	@NotNull(message = "Price is mandatory")
 	@Min(value = 0)
 	private double prezzo;
+
+	@ManyToMany
+	private List<Ingredienti> ingredienti;
 
 	// getter e setter
 
@@ -60,6 +66,14 @@ public class Pizza {
 
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
+	}
+
+	public List<Ingredienti> getIngredienti() {
+		return ingredienti;
+	}
+
+	public void setIngredienti(List<Ingredienti> ingredienti) {
+		this.ingredienti = ingredienti;
 	}
 
 }

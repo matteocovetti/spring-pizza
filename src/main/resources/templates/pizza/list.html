@@ -18,6 +18,7 @@
   				<th>Nome</th>
   				<th>Descrizione</th>
   				<th>Prezzo (€)</th>
+  				<th>Ingredienti</th>
   				<th>Actions</th>
   			</tr>
   		</thead>
@@ -26,7 +27,11 @@
   				<td th:text="${p.nome}">Nome</td>
   				<td th:text="${p.descrizione}">Descrizione</td>
   				<td th:text="${p.prezzo}">Prezzo</td>
-  				
+  				<td>
+  					<ul>
+  						<li th:each="i : ${p.ingredienti}" th:text="${i.name}"></li>
+  					</ul>
+  				</td>
   				<td>
   					<a class="btn btn-primary" th:href="@{|/delete/${p.id}|}" title="Delete" onclick="return confirm('Are you sure?')">
   					<i class="fa-solid fa-trash-can"></i>
